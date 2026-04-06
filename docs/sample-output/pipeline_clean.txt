@@ -1,0 +1,15 @@
+2026-04-06 02:26:13,832 | INFO | __main__ | Starting pipeline run
+2026-04-06 02:26:13,832 | INFO | src.pipeline.extract | Reading customers from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/raw/customers.csv
+2026-04-06 02:26:13,841 | INFO | src.pipeline.extract | Reading orders from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/raw/orders.csv
+2026-04-06 02:26:13,849 | INFO | src.pipeline.extract | Reading order_items from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/raw/order_items.csv
+2026-04-06 02:26:13,865 | INFO | src.pipeline.extract | Reading products from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/raw/products.csv
+2026-04-06 02:26:13,997 | INFO | src.pipeline.load | Creating table customers
+2026-04-06 02:26:13,999 | INFO | src.pipeline.load | Loading 3000 rows into customers
+2026-04-06 02:26:14,008 | INFO | src.pipeline.load | Creating table products
+2026-04-06 02:26:14,012 | INFO | src.pipeline.load | Loading 3309 rows into products
+2026-04-06 02:26:14,025 | INFO | src.pipeline.load | Creating table orders
+2026-04-06 02:26:14,047 | INFO | src.pipeline.load | Loading 3000 rows into orders
+2026-04-06 02:26:14,065 | INFO | src.pipeline.load | Creating table order_items
+2026-04-06 02:26:14,081 | INFO | src.pipeline.load | Loading 10171 rows into order_items
+2026-04-06 02:26:14,109 | INFO | src.pipeline.load | SQLite database created at /Users/vayu/Documents/Playground/automated-data-validation-pipeline/database/pipeline.db
+2026-04-06 02:26:14,109 | INFO | __main__ | Pipeline completed successfully

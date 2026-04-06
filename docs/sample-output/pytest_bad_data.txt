@@ -1,0 +1,2432 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.1, pytest-8.3.5, pluggy-1.6.0 -- /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/vayu/Documents/Playground/automated-data-validation-pipeline
+configfile: pytest.ini
+collecting ... collected 65 items
+
+tests/test_pipeline_smoke.py::test_database_file_exists ERROR            [  1%]
+tests/test_pipeline_smoke.py::test_pipeline_run_completes_without_exception ERROR [  3%]
+tests/test_pipeline_smoke.py::test_expected_tables_exist ERROR           [  4%]
+tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[customers-customers_df] ERROR [  6%]
+tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[orders-orders_df] ERROR [  7%]
+tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[order_items-order_items_df] ERROR [  9%]
+tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[products-products_df] ERROR [ 10%]
+tests/test_schema.py::test_tables_exist_in_sqlite[customers] ERROR       [ 12%]
+tests/test_schema.py::test_tables_exist_in_sqlite[orders] ERROR          [ 13%]
+tests/test_schema.py::test_tables_exist_in_sqlite[order_items] ERROR     [ 15%]
+tests/test_schema.py::test_tables_exist_in_sqlite[products] ERROR        [ 16%]
+tests/test_schema.py::test_expected_columns_exist[customers-customers_df] ERROR [ 18%]
+tests/test_schema.py::test_expected_columns_exist[orders-orders_df] ERROR [ 20%]
+tests/test_schema.py::test_expected_columns_exist[order_items-order_items_df] ERROR [ 21%]
+tests/test_schema.py::test_expected_columns_exist[products-products_df] ERROR [ 23%]
+tests/test_schema.py::test_column_order_matches_expected_schema[customers-customers_df] ERROR [ 24%]
+tests/test_schema.py::test_column_order_matches_expected_schema[orders-orders_df] ERROR [ 26%]
+tests/test_schema.py::test_column_order_matches_expected_schema[order_items-order_items_df] ERROR [ 27%]
+tests/test_schema.py::test_column_order_matches_expected_schema[products-products_df] ERROR [ 29%]
+tests/test_nulls.py::test_required_columns_are_not_null[customers-customers_df-customer_id] ERROR [ 30%]
+tests/test_nulls.py::test_required_columns_are_not_null[customers-customers_df-customer_unique_id] ERROR [ 32%]
+tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_id] ERROR [ 33%]
+tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-customer_id] ERROR [ 35%]
+tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_status] ERROR [ 36%]
+tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_purchase_timestamp] ERROR [ 38%]
+tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_estimated_delivery_date] ERROR [ 40%]
+tests/test_nulls.py::test_required_columns_are_not_null[order_items-order_items_df-order_id] ERROR [ 41%]
+tests/test_nulls.py::test_required_columns_are_not_null[order_items-order_items_df-order_item_id] ERROR [ 43%]
+tests/test_nulls.py::test_required_columns_are_not_null[order_items-order_items_df-product_id] ERROR [ 44%]
+tests/test_duplicates.py::test_primary_key_uniqueness[customers-customers_df-columns0] ERROR [ 46%]
+tests/test_duplicates.py::test_primary_key_uniqueness[orders-orders_df-columns1] ERROR [ 47%]
+tests/test_duplicates.py::test_primary_key_uniqueness[products-products_df-columns2] ERROR [ 49%]
+tests/test_duplicates.py::test_order_items_composite_key_is_unique ERROR [ 50%]
+tests/test_duplicates.py::test_orders_have_no_full_row_duplicates ERROR  [ 52%]
+tests/test_duplicates.py::test_order_items_have_no_full_row_duplicates ERROR [ 53%]
+tests/test_referential_integrity.py::test_foreign_keys_are_valid[orders-orders_df-customer_id-customers-customers_df-customer_id] ERROR [ 55%]
+tests/test_referential_integrity.py::test_foreign_keys_are_valid[order_items-order_items_df-order_id-orders-orders_df-order_id] ERROR [ 56%]
+tests/test_referential_integrity.py::test_foreign_keys_are_valid[order_items-order_items_df-product_id-products-products_df-product_id] ERROR [ 58%]
+tests/test_referential_integrity.py::test_orders_customer_ids_map_to_exactly_one_customer_row ERROR [ 60%]
+tests/test_referential_integrity.py::test_order_items_have_zero_orphan_orders ERROR [ 61%]
+tests/test_referential_integrity.py::test_order_items_have_zero_orphan_products ERROR [ 63%]
+tests/test_referential_integrity.py::test_orders_have_zero_orphan_customers ERROR [ 64%]
+tests/test_business_rules.py::test_order_items_numeric_fields_are_non_negative[price] ERROR [ 66%]
+tests/test_business_rules.py::test_order_items_numeric_fields_are_non_negative[freight_value] ERROR [ 67%]
+tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_weight_g] ERROR [ 69%]
+tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_length_cm] ERROR [ 70%]
+tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_height_cm] ERROR [ 72%]
+tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_width_cm] ERROR [ 73%]
+tests/test_business_rules.py::test_order_status_is_allowed ERROR         [ 75%]
+tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_approved_at] ERROR [ 76%]
+tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_delivered_carrier_date] ERROR [ 78%]
+tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_delivered_customer_date] ERROR [ 80%]
+tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_estimated_delivery_date] ERROR [ 81%]
+tests/test_business_rules.py::test_order_item_ids_start_at_one ERROR     [ 83%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[customers-customers_df-customer_id] ERROR [ 84%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[customers-customers_df-customer_unique_id] ERROR [ 86%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[orders-orders_df-order_id] ERROR [ 87%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[orders-orders_df-customer_id] ERROR [ 89%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[order_items-order_items_df-order_id] ERROR [ 90%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[order_items-order_items_df-product_id] ERROR [ 92%]
+tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[products-products_df-product_id] ERROR [ 93%]
+tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[customers-customers_df] ERROR [ 95%]
+tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[orders-orders_df] ERROR [ 96%]
+tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[order_items-order_items_df] ERROR [ 98%]
+tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[products-products_df] ERROR [100%]
+
+==================================== ERRORS ====================================
+_________________ ERROR at setup of test_database_file_exists __________________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+---------------------------- Captured stderr setup -----------------------------
+2026-04-06 02:25:49,510 | INFO | src.pipeline.run_pipeline | Starting pipeline run
+2026-04-06 02:25:49,510 | INFO | src.pipeline.extract | Reading customers from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/customers.csv
+2026-04-06 02:25:49,521 | INFO | src.pipeline.extract | Reading orders from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/orders.csv
+2026-04-06 02:25:49,532 | INFO | src.pipeline.extract | Reading order_items from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/order_items.csv
+2026-04-06 02:25:49,547 | INFO | src.pipeline.extract | Reading products from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/products.csv
+2026-04-06 02:25:49,915 | INFO | src.pipeline.load | Creating table customers
+2026-04-06 02:25:49,918 | INFO | src.pipeline.load | Loading 3000 rows into customers
+------------------------------ Captured log setup ------------------------------
+INFO     src.pipeline.run_pipeline:run_pipeline.py:14 Starting pipeline run
+INFO     src.pipeline.extract:extract.py:17 Reading customers from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/customers.csv
+INFO     src.pipeline.extract:extract.py:17 Reading orders from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/orders.csv
+INFO     src.pipeline.extract:extract.py:17 Reading order_items from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/order_items.csv
+INFO     src.pipeline.extract:extract.py:17 Reading products from /Users/vayu/Documents/Playground/automated-data-validation-pipeline/data/bad/products.csv
+INFO     src.pipeline.load:load.py:93 Creating table customers
+INFO     src.pipeline.load:load.py:96 Loading 3000 rows into customers
+_______ ERROR at setup of test_pipeline_run_completes_without_exception ________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_________________ ERROR at setup of test_expected_tables_exist _________________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__ ERROR at setup of test_loaded_tables_are_non_empty[customers-customers_df] __
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_____ ERROR at setup of test_loaded_tables_are_non_empty[orders-orders_df] _____
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_loaded_tables_are_non_empty[order_items-order_items_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+___ ERROR at setup of test_loaded_tables_are_non_empty[products-products_df] ___
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+___________ ERROR at setup of test_tables_exist_in_sqlite[customers] ___________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+____________ ERROR at setup of test_tables_exist_in_sqlite[orders] _____________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__________ ERROR at setup of test_tables_exist_in_sqlite[order_items] __________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+___________ ERROR at setup of test_tables_exist_in_sqlite[products] ____________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+____ ERROR at setup of test_expected_columns_exist[customers-customers_df] _____
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_______ ERROR at setup of test_expected_columns_exist[orders-orders_df] ________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__ ERROR at setup of test_expected_columns_exist[order_items-order_items_df] ___
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_____ ERROR at setup of test_expected_columns_exist[products-products_df] ______
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_column_order_matches_expected_schema[customers-customers_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_column_order_matches_expected_schema[orders-orders_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_column_order_matches_expected_schema[order_items-order_items_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_column_order_matches_expected_schema[products-products_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[customers-customers_df-customer_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[customers-customers_df-customer_unique_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[orders-orders_df-order_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[orders-orders_df-customer_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[orders-orders_df-order_status] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[orders-orders_df-order_purchase_timestamp] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[orders-orders_df-order_estimated_delivery_date] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[order_items-order_items_df-order_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[order_items-order_items_df-order_item_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_required_columns_are_not_null[order_items-order_items_df-product_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_primary_key_uniqueness[customers-customers_df-columns0] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+___ ERROR at setup of test_primary_key_uniqueness[orders-orders_df-columns1] ___
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_primary_key_uniqueness[products-products_df-columns2] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__________ ERROR at setup of test_order_items_composite_key_is_unique __________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__________ ERROR at setup of test_orders_have_no_full_row_duplicates ___________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+________ ERROR at setup of test_order_items_have_no_full_row_duplicates ________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_foreign_keys_are_valid[orders-orders_df-customer_id-customers-customers_df-customer_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_foreign_keys_are_valid[order_items-order_items_df-order_id-orders-orders_df-order_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_foreign_keys_are_valid[order_items-order_items_df-product_id-products-products_df-product_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__ ERROR at setup of test_orders_customer_ids_map_to_exactly_one_customer_row __
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__________ ERROR at setup of test_order_items_have_zero_orphan_orders __________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_________ ERROR at setup of test_order_items_have_zero_orphan_products _________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+___________ ERROR at setup of test_orders_have_zero_orphan_customers ___________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+__ ERROR at setup of test_order_items_numeric_fields_are_non_negative[price] ___
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_order_items_numeric_fields_are_non_negative[freight_value] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_product_dimensions_are_non_negative[product_weight_g] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_product_dimensions_are_non_negative[product_length_cm] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_product_dimensions_are_non_negative[product_height_cm] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_product_dimensions_are_non_negative[product_width_cm] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+________________ ERROR at setup of test_order_status_is_allowed ________________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_approved_at] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_delivered_carrier_date] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_delivered_customer_date] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_estimated_delivery_date] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+______________ ERROR at setup of test_order_item_ids_start_at_one ______________
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[customers-customers_df-customer_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[customers-customers_df-customer_unique_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[orders-orders_df-order_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[orders-orders_df-customer_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[order_items-order_items_df-order_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[order_items-order_items_df-product_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_identifier_columns_have_no_blank_strings[products-products_df-product_id] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_curated_subset_meets_row_count_thresholds[customers-customers_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_curated_subset_meets_row_count_thresholds[orders-orders_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_curated_subset_meets_row_count_thresholds[order_items-order_items_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+_ ERROR at setup of test_curated_subset_meets_row_count_thresholds[products-products_df] _
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_database() -> Path:
+>       return run_pipeline(raw_dir=get_runtime_raw_dir())
+
+tests/conftest.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/pipeline/run_pipeline.py:17: in run_pipeline
+    db_path = load_to_sqlite(transformed_data)
+src/pipeline/load.py:97: in load_to_sqlite
+    prepared_df.to_sql(table_name, connection, if_exists="append", index=False)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/core/generic.py:3087: in to_sql
+    return sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:842: in to_sql
+    return pandas_sql.to_sql(
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2851: in to_sql
+    return table.insert(chunksize, method)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:1119: in insert
+    num_inserted = exec_insert(conn, keys, chunk_iter)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <pandas.io.sql.SQLiteTable object at 0x108ba8ce0>
+conn = <sqlite3.Cursor object at 0x108c43e40>
+keys = ['customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state']
+data_iter = <zip object at 0x10922f080>
+
+    def _execute_insert(self, conn, keys, data_iter) -> int:
+        data_list = list(data_iter)
+>       conn.executemany(self.insert_statement(num_rows=1), data_list)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/pandas/io/sql.py:2547: IntegrityError
+=========================== short test summary info ============================
+ERROR tests/test_pipeline_smoke.py::test_database_file_exists - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_pipeline_smoke.py::test_pipeline_run_completes_without_exception - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_pipeline_smoke.py::test_expected_tables_exist - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[customers-customers_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[orders-orders_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[order_items-order_items_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_pipeline_smoke.py::test_loaded_tables_are_non_empty[products-products_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_tables_exist_in_sqlite[customers] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_tables_exist_in_sqlite[orders] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_tables_exist_in_sqlite[order_items] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_tables_exist_in_sqlite[products] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_expected_columns_exist[customers-customers_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_expected_columns_exist[orders-orders_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_expected_columns_exist[order_items-order_items_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_expected_columns_exist[products-products_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_column_order_matches_expected_schema[customers-customers_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_column_order_matches_expected_schema[orders-orders_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_column_order_matches_expected_schema[order_items-order_items_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_schema.py::test_column_order_matches_expected_schema[products-products_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[customers-customers_df-customer_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[customers-customers_df-customer_unique_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-customer_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_status] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_purchase_timestamp] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[orders-orders_df-order_estimated_delivery_date] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[order_items-order_items_df-order_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[order_items-order_items_df-order_item_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_nulls.py::test_required_columns_are_not_null[order_items-order_items_df-product_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_duplicates.py::test_primary_key_uniqueness[customers-customers_df-columns0] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_duplicates.py::test_primary_key_uniqueness[orders-orders_df-columns1] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_duplicates.py::test_primary_key_uniqueness[products-products_df-columns2] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_duplicates.py::test_order_items_composite_key_is_unique - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_duplicates.py::test_orders_have_no_full_row_duplicates - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_duplicates.py::test_order_items_have_no_full_row_duplicates - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_foreign_keys_are_valid[orders-orders_df-customer_id-customers-customers_df-customer_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_foreign_keys_are_valid[order_items-order_items_df-order_id-orders-orders_df-order_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_foreign_keys_are_valid[order_items-order_items_df-product_id-products-products_df-product_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_orders_customer_ids_map_to_exactly_one_customer_row - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_order_items_have_zero_orphan_orders - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_order_items_have_zero_orphan_products - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_referential_integrity.py::test_orders_have_zero_orphan_customers - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_items_numeric_fields_are_non_negative[price] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_items_numeric_fields_are_non_negative[freight_value] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_weight_g] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_length_cm] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_height_cm] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_product_dimensions_are_non_negative[product_width_cm] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_status_is_allowed - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_approved_at] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_delivered_carrier_date] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_delivered_customer_date] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_dates_follow_expected_sequence[order_purchase_timestamp-order_estimated_delivery_date] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_order_item_ids_start_at_one - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[customers-customers_df-customer_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[customers-customers_df-customer_unique_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[orders-orders_df-order_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[orders-orders_df-customer_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[order_items-order_items_df-order_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[order_items-order_items_df-product_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_identifier_columns_have_no_blank_strings[products-products_df-product_id] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[customers-customers_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[orders-orders_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[order_items-order_items_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+ERROR tests/test_business_rules.py::test_curated_subset_meets_row_count_thresholds[products-products_df] - sqlite3.IntegrityError: UNIQUE constraint failed: customers.customer_id
+============================== 65 errors in 9.96s ==============================

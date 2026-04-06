@@ -84,11 +84,11 @@ def load_to_sqlite(
     target_db_path = db_path or get_runtime_db_path()
     DB_DIR.mkdir(parents=True, exist_ok=True)
     _write_processed_csvs(dataframes)
+    if target_db_path.exists():
+        target_db_path.unlink()
 
     with sqlite3.connect(target_db_path) as connection:
         connection.execute("PRAGMA foreign_keys = ON;")
-        for table_name in reversed(TABLE_LOAD_ORDER):
-            connection.execute(f"DROP TABLE IF EXISTS {table_name}")
         for table_name in TABLE_LOAD_ORDER:
             logger.info("Creating table %s", table_name)
             connection.execute(CREATE_TABLE_STATEMENTS[table_name])

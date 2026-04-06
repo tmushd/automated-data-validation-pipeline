@@ -52,6 +52,11 @@ flowchart LR
     F --> G["GitHub Actions CI"]
 ```
 
+Additional docs:
+
+- [Architecture Notes](./docs/architecture.md)
+- [Portfolio Evidence](./docs/portfolio-evidence.md)
+
 ## Repository Layout
 
 ```text
@@ -132,6 +137,12 @@ PIPELINE_RAW_DIR=data/bad pytest -v
 ```
 
 The repository also includes `tests/test_bad_data_detection.py`, which proves the validators catch these failures without breaking the default green CI run.
+
+Captured example outputs:
+
+- [Clean pipeline output](./docs/sample-output/pipeline_clean.txt)
+- [Clean pytest output](./docs/sample-output/pytest_clean.txt)
+- [Bad data failure output](./docs/sample-output/pytest_bad_data.txt)
 
 ## CI
 
