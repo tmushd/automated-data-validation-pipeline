@@ -2,17 +2,39 @@
 
 [![CI](https://github.com/tmushd/automated-data-validation-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/tmushd/automated-data-validation-pipeline/actions/workflows/ci.yml)
 
-Built a reusable data validation framework for a multi-table e-commerce pipeline using Pandas and SQLite. The project ingests a curated subset of the Olist Brazilian e-commerce dataset, applies light transformations, loads four related tables into SQLite, and runs 89 automated Pytest checks for schema, nulls, duplicates, referential integrity, data types, and business rules.
+A recruiter-friendly, end-to-end data quality project that turns a multi-table e-commerce dataset into a tested SQLite pipeline with automated validation in CI.
 
-## Project Summary
+## Why This Project Stands Out
+
+Most student data projects stop at analysis notebooks. This one is built like a small production-facing data workflow:
+
+- multi-table relational data instead of a single flat CSV
+- reusable validation functions instead of one-off assertions
+- 89 automated Pytest checks covering schema, integrity, and business rules
+- deterministic CI that reruns the pipeline and validation suite on every push and pull request
+- a bad-data demo that proves the framework catches real failures
+
+## At A Glance
+
+| Area | What this project does |
+| --- | --- |
+| Dataset | Curated subset of the Olist Brazilian e-commerce dataset |
+| Pipeline | CSV -> Pandas -> SQLite |
+| Tables | `customers`, `orders`, `order_items`, `products` |
+| Testing | 89 Pytest checks with reusable validators |
+| Validation scope | schema, nulls, duplicates, FKs, dtypes, dates, business rules |
+| CI | GitHub Actions on every push and PR |
+| Failure demo | Intentional bad data in `data/bad/` |
+
+## What It Does
 
 This project simulates a lightweight analytics pipeline with a strong testing layer:
 
-- Source layer: curated Olist CSV subset committed in `data/raw/`
-- Staging layer: cleaned Pandas DataFrames
-- Warehouse layer: SQLite tables in `database/pipeline.db`
-- Quality layer: reusable validators in `src/validation/validators.py`
-- CI layer: GitHub Actions on every push and pull request
+- extracts curated Olist CSV files from `data/raw/`
+- applies light cleaning and type normalization in Pandas
+- loads four related tables into SQLite
+- validates the data with reusable validator functions in `src/validation/validators.py`
+- runs the full pipeline and test suite automatically through GitHub Actions
 
 ## Tech Stack
 
@@ -24,7 +46,9 @@ This project simulates a lightweight analytics pipeline with a strong testing la
 
 ## Dataset
 
-The repository uses a curated subset of the Olist Brazilian E-Commerce Public Dataset from Kaggle. The original dataset covers roughly 100k orders from 2016 to 2018 across multiple related marketplace tables. To keep the repository lightweight and CI-friendly, this repo commits only a deterministic subset of four tables:
+The repository uses a curated subset of the Olist Brazilian E-Commerce Public Dataset from Kaggle. The original dataset contains roughly 100k Brazilian e-commerce orders from 2016 to 2018 across multiple related marketplace tables.
+
+To keep the repo lightweight and CI-friendly, this project commits a deterministic subset of four tables:
 
 - `customers`
 - `orders`
@@ -38,7 +62,7 @@ Committed subset sizes:
 - `order_items`: 10,171 rows
 - `products`: 3,309 rows
 
-Note: in Olist, `customer_id` is effectively order-scoped in this slice of the data, so preserving relational integrity for 3,000 orders also means keeping 3,000 customer rows.
+Note: in this Olist slice, `customer_id` is effectively order-scoped, so preserving referential integrity for 3,000 orders also means keeping 3,000 customer rows.
 
 ## Architecture
 
@@ -57,7 +81,34 @@ Additional docs:
 - [Architecture Notes](./docs/architecture.md)
 - [Portfolio Evidence](./docs/portfolio-evidence.md)
 
-## Repository Layout
+## Validation Coverage
+
+The framework includes reusable checks for:
+
+- table existence
+- schema and column order
+- not-null enforcement
+- uniqueness and composite uniqueness
+- non-negative numeric fields
+- allowed categorical values
+- dtype-family validation
+- foreign-key validation
+- date ordering rules
+- blank-string detection
+- minimum row-count thresholds
+
+## Example Quality Rules
+
+A few representative rules enforced by the suite:
+
+- `orders.customer_id` must exist in `customers.customer_id`
+- `order_items.product_id` must exist in `products.product_id`
+- `order_status` must be in the allowed status set
+- `price >= 0` and `freight_value >= 0`
+- `order_approved_at >= order_purchase_timestamp` when present
+- `(order_id, order_item_id)` must be unique in `order_items`
+
+## Project Structure
 
 ```text
 .
@@ -66,6 +117,7 @@ Additional docs:
 │   ├── bad/
 │   └── processed/
 ├── database/
+├── docs/
 ├── src/
 │   ├── pipeline/
 │   ├── validation/
@@ -73,24 +125,6 @@ Additional docs:
 ├── tests/
 └── .github/workflows/
 ```
-
-## Validation Coverage
-
-The framework includes reusable validators for:
-
-- table existence
-- schema and column order checks
-- not-null enforcement
-- uniqueness and composite uniqueness
-- negative numeric detection
-- allowed categorical values
-- dtype-family validation
-- foreign-key validation
-- date ordering rules
-- blank-string detection
-- minimum row-count thresholds
-
-The current suite contains 89 automated checks, including dedicated bad-data detection tests.
 
 ## How To Run
 
@@ -130,13 +164,11 @@ The `data/bad/` folder contains intentionally corrupted copies of the same table
 - invalid date ordering
 - schema mismatch from a removed column
 
-To reproduce a failing pipeline/test run against the corrupted dataset, point the pipeline at `data/bad/`:
+To reproduce a failing run against the corrupted dataset:
 
 ```bash
 PIPELINE_RAW_DIR=data/bad pytest -v
 ```
-
-The repository also includes `tests/test_bad_data_detection.py`, which proves the validators catch these failures without breaking the default green CI run.
 
 Captured example outputs:
 
@@ -154,4 +186,15 @@ GitHub Actions runs the full workflow on every push and pull request:
 4. runs `python -m src.pipeline.run_pipeline`
 5. runs `pytest -v`
 
+## Interview Summary
 
+A concise way to describe the project:
+
+> I used a multi-table subset of the Olist Kaggle e-commerce dataset to build a realistic pipeline instead of validating a single flat CSV. I ingested the data with Pandas, loaded it into SQLite, built reusable validation functions, and exercised them through parameterized Pytest checks for schema, nulls, duplicates, foreign keys, data types, and business rules. I then integrated GitHub Actions so every push and pull request reruns the pipeline and test suite automatically.
+
+## Resume Version
+
+**Data Pipeline Testing and Validation Framework | Python, Pandas, Pytest, SQLite, GitHub Actions**
+
+- Built a reusable validation framework for a multi-table e-commerce pipeline using Pandas and SQLite, implementing 40+ parameterized Pytest checks for schema enforcement, null detection, duplicate detection, referential integrity, and business-rule validation
+- Integrated a GitHub Actions CI pipeline to run automated data quality tests on every push and pull request, making validation reproducible across code changes
