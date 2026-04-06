@@ -66,6 +66,8 @@ Note: in this Olist slice, `customer_id` is effectively order-scoped, so preserv
 
 ## Architecture
 
+![Architecture diagram](./docs/assets/architecture_diagram.png)
+
 ```mermaid
 flowchart LR
     A["Curated CSVs in data/raw"] --> B["Pandas extraction"]
@@ -80,6 +82,7 @@ Additional docs:
 
 - [Architecture Notes](./docs/architecture.md)
 - [Portfolio Evidence](./docs/portfolio-evidence.md)
+- [Pinned Project Blurb](./docs/pinned-project-blurb.md)
 
 ## Validation Coverage
 
@@ -185,6 +188,12 @@ GitHub Actions runs the full workflow on every push and pull request:
 3. installs dependencies from `requirements.txt`
 4. runs `python -m src.pipeline.run_pipeline`
 5. runs `pytest -v`
+
+## GitHub Pinned Blurb
+
+Use this short blurb for the repo description or a pinned-project summary:
+
+> Built a reusable data validation framework for a multi-table e-commerce pipeline using Pandas, SQLite, Pytest, and GitHub Actions. The project loads a curated Olist dataset subset into SQLite, runs 89 automated quality checks for schema, nulls, duplicates, referential integrity, and business rules, and includes a bad-data demo that proves the framework catches real failures.
 
 ## Interview Summary
 
