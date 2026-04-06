@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+database/*.db
+data/processed/*.csv
+data/source_full/
+.DS_Store
+.ipynb_checkpoints/
